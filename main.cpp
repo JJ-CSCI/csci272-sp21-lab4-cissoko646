@@ -6,11 +6,6 @@
 using Catch::Matchers::Equals;
 //------------------------------
 
-// Fix the following class
-// class Complex {
-//     void operator>>(std::string&) const;
-//     void operator<<(const std::string&);
-// };
 
 
 class Complex
