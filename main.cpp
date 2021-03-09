@@ -7,10 +7,78 @@ using Catch::Matchers::Equals;
 //------------------------------
 
 // Fix the following class
-class Complex {
-    void operator>>(std::string&) const;
-    void operator<<(const std::string&);
-};
+// class Complex {
+//     void operator>>(std::string&) const;
+//     void operator<<(const std::string&);
+// };
+
+
+class Complex
+{
+private:
+        int imaginary, real;
+public:
+
+
+
+ Complex(int real = 0, int imaginary = 0) : imaginary{imaginary}, real {real} {}
+
+  int re() 
+   {
+    return real;
+   }
+
+  int im()
+   {
+    return imaginary;
+   }
+
+   void operator>>(std::string& s) const
+   {
+    s.append(std::to_string(this->real));
+    if (this->imaginary >= 0)
+    {
+    s.append("+=");
+
+    }
+    
+    s.append(std::to_string(this->imaginary));
+    s.append("i");
+
+    }
+
+  void operator<<(const std::string& s)
+   {
+
+    if (s[0] == '-')
+    {
+     int re = s[1] - '0';
+     this->real = -1 * re;
+    }
+   else
+    {
+    this->real = s[0] - '0'; //converting char to int;
+    }
+
+  int a = s.find("i");
+  int b = a - 1;
+  int c = a - 2;
+  if (s[c] == '-')
+  {
+   this->imaginary = -1 * (s[b] - '0');
+  }
+   else
+  {
+   this->imaginary = s[b] - '0';
+  }
+
+
+  }
+  };
+
+
+
+
 
 //------------------------------
 //   DO NOT MODIFY TEST CASES
